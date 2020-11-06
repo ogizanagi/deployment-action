@@ -44,9 +44,19 @@ async function run() {
       description
     });
 
+    console.log({
+      ...context.repo,
+      deployment_id: deployment.data.id,
+      description: description,
+      state: initialStatus,
+      log_url: logUrl,
+      environment_url: url
+    });
+
     await client.repos.createDeploymentStatus({
       ...context.repo,
       deployment_id: deployment.data.id,
+      description: description,
       state: initialStatus,
       log_url: logUrl,
       environment_url: url
